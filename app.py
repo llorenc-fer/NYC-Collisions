@@ -25,16 +25,16 @@ data = load_data(100000)
 original_data = data
 
 # find the indices of the rows that contain latitudes outside the range of 35 to 50
-latitude_indices_to_drop = df[(df['latitude'] < 35) | (df['latitude'] > 50)].index
+latitude_indices_to_drop = data[(data['latitude'] < 35) | (data['latitude'] > 50)].index
 
 # find the indices of the rows that contain longitudes outside the range of -70 to -75
-longitude_indices_to_drop = df[(df['longitude'] < -75) | (df['longitude'] > -70)].index
+longitude_indices_to_drop = data[(data['longitude'] < -75) | (data['longitude'] > -70)].index
 
 # combine the indices of the rows to drop
 indices_to_drop = latitude_indices_to_drop.union(longitude_indices_to_drop)
 
 # drop the rows that contain latitudes or longitudes outside the specified ranges
-df = df.drop(indices_to_drop)
+data = data.drop(indices_to_drop)
 
 st.header("Where are the most people injured in NYC?")
 injured_people = st.slider("Number of persons injured in vehicle collissions", min_value=0, max_value=19, value=0)
