@@ -8,8 +8,7 @@ DATA_URL = (
 "https://github.com/chairielazizi/streamlit-collision/blob/master/Motor_Vehicle_Collisions_-_Crashes.csv?raw=true"
 )
 
-st.title("Motor Vehicle Collisions in NYC")
-st.image('https://www.ivy.co/wp-content/uploads/2018/05/ICFF-Landing-Page-Header-Background-NYC.jpg', caption=
+st.title("Motor Vehicle Collisions in New York City")
 st.markdown("This application is a Streamlit Dashboard that can be used"
 " to analyze motor vehicle collisions in NYC")
 
@@ -24,9 +23,13 @@ def load_data(nrows):
 
 data = load_data(100000)
 original_data = data
+# find the indices of the rows that contain latitudes outside the range of 35 to 50
+indices_to_drop = data[(data['latitude'] < 35) | (data['latitude'] > 50)].index
 
+# drop the rows that contain latitudes outside the range of 35 to 50
+data = data.drop(indices_to_drop)
 st.header("Where are the most people injured in NYC?")
-injured_people = st.slider("Number of persons injured in vehicle collissions", 0, 19)
+injured_people = st.slider("Number of persons injured in vehicle collissions", min_value=0, max_value=19, value=0)
 st.map(data.query("injured_persons >= @injured_people")[['latitude', 'longitude']].dropna(how="any"))
 
 
@@ -42,7 +45,7 @@ st.write(pdk.Deck(
     initial_view_state={
         "latitude": midpoint[0],
         "longitude": midpoint[1],
-        "zoom": 11,
+        "zoom": 10,
         "pitch": 50,
     },
     layers=[
