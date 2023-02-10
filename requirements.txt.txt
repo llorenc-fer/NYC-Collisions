@@ -3,3 +3,4 @@ numpy==1.23.5
 pydeck==0.8.0
 plotly==5.11.0
 plotly-express==0.4.1
+plotly-resampler==0.8.4rc1
