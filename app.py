@@ -25,7 +25,7 @@ data = load_data(100000)
 original_data = data
 # find the indices of the rows that contain latitudes outside the range of 35 to 50
 indices_to_drop = data[(data['latitude'] < 35) | (data['latitude'] > 50)].index
-indices_to_drop1 = data[(data['longitude'] < -75) | (data['longitude'] > -70].index
+indices_to_drop1 = data[(data['longitude'] < -75) | (data['longitude'] > -70)].index
 # drop the rows that contain latitudes outside the range of 35 to 50
                                                      
 data = data.drop(indices_to_drop, indices_to_drop1)
