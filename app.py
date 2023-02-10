@@ -8,7 +8,8 @@ DATA_URL = (
 r"https://github.com/chairielazizi/streamlit-collision/blob/master/Motor_Vehicle_Collisions_-_Crashes.csv?raw=true"
 )
 
-st.title("Motor Vehicle Collisions in New York City")
+st.title("Motor Vehicle Collisions in NYC")
+st.image('https://www.ivy.co/wp-content/uploads/2018/05/ICFF-Landing-Page-Header-Background-NYC.jpg', caption=
 st.markdown("This application is a Streamlit Dashboard that can be used"
 " to analyze motor vehicle collisions in NYC")
 
@@ -30,7 +31,7 @@ st.map(data.query("injured_persons >= @injured_people")[['latitude', 'longitude'
 
 
 st.header("How many collisions occur during a given time of day?")
-hour = st.slider("Hour", 0,23)
+hour = st.slider("Hour", 0,23, value=4)
 data = data[data['date/time'].dt.hour == hour]
 
 st.markdown("Vehicle collisions between %i:00 and %i:00" % (hour, (hour+1) % 24))
