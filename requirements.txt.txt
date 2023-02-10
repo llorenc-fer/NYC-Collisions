@@ -1,0 +1,5 @@
+pandas==1.5.2
+numpy==1.23.5
+pydeck==0.8.0
+plotly==5.11.0
+plotly-express==0.4.1
