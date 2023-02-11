@@ -14,7 +14,7 @@ def add_bg_from_url():
          f"""
          <style>
          .stApp {{
-             background-image: url("https://github.com/llorenc-fer/NYC-Collisions/blob/main/photo_2023-02-11_12-57-38.jpg?raw=true");
+             background-image: url("https://github.com/llorenc-fer/NYC-Collisions/blob/main/pexels-photo-2168974.jpeg?raw=true");
              background-attachment: fixed;
              background-size: cover
          }}
