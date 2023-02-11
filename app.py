@@ -26,10 +26,11 @@ def add_bg_from_url():
 
 add_bg_from_url()
 
-st.title("Motor Vehicle Collisions in New York City")
+st.title("Motor Vehicle Collisions in NYC")
 
 st.markdown("This application is a Streamlit Dashboard that can be used"
 " to analyze motor vehicle collisions in NYC")
+st.write("by Llorenç Fernández")
 
 @st.cache(persist=True)
 def load_data(nrows):
