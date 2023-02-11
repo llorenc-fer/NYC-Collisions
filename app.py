@@ -91,7 +91,7 @@ st.write(pdk.Deck(
     ],
 ))
 
-st.subheader("Breakdown by minute between %i:00 and %i:00" % (hour, (hour+1) %24))
+st.subheader("Breakdown by minute between %i:00 and %i:00" % (hour[0], hour[1]))
 filtered = data[
     (data['date/time'].dt.hour >= hour) & (data['date/time'].dt.hour < (hour +1))
 ]
