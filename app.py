@@ -57,7 +57,7 @@ indices_to_drop = latitude_indices_to_drop.union(longitude_indices_to_drop)
 data = data.drop(indices_to_drop)
 
 st.header("Where are the most people injured in NYC?")
-injured_people = st.slider("Number of persons injured in vehicle collissions", 0,19(2,4))
+injured_people = st.slider("Number of persons injured in vehicle collissions", min_value=0,max_value=19)
 st.map(data.query("injured_persons >= @injured_people")[['latitude', 'longitude']].dropna(how="any"))
 
 
