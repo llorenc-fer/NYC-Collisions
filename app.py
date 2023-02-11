@@ -93,7 +93,7 @@ st.write(pdk.Deck(
 
 st.subheader("Breakdown by minute between %i:00 and %i:00" % (hour[0], hour[1]))
 filtered = data[
-    (data['date/time'].dt.hour >= hour) & (data['date/time'].dt.hour < (hour +1))
+    (data['date/time'].dt.hour >= hour[0]) & (data['date/time'].dt.hour < (hour[1]))
 ]
 hist = np.histogram(filtered['date/time'].dt.minute, bins=60, range=(0,60))[0]
 chart_data = pd.DataFrame({'minute': range(60), 'crashes':hist})
