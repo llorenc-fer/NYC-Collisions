@@ -99,6 +99,22 @@ chart_data = pd.DataFrame({'minute': range(60), 'crashes':hist})
 fig = px.bar(chart_data, x='minute', y='crashes', hover_data=['minute', 'crashes'], height=400)
 st.write(fig)
 
+st.header("How many collisions occur during a given month?")
+month = st.slider("Month", 1,12)
+data = data[data['date/time'].dt.month == month]
+st.subheader("Breakdown by month between %i and %i" % (month, (month+1) %12))
+filtered = data[
+    (data['date/time'].dt.month >= month) & (data['date/time'].dt.month < (month +1))
+]
+hist = np.histogram(filtered['date/time'].dt.month, bins=12, range=(0,12))[0]
+chart_data = pd.DataFrame({'month': range(12), 'crashes':hist})
+fig = px.bar(chart_data, x='month', y='crashes', hover_data=['month', 'crashes'], height=400)
+st.write(fig)
+
+
+
+
+
 
 st.header("Top 5 Dangerous Streets by affected type")
 select = st.selectbox("Affected type of people", ['Pedestrians', 'Cyclists', "Motorists"])
